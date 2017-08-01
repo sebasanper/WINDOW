@@ -60,4 +60,4 @@ def run_workflow(a, b, c, d, e, f, g, h, i, j):
         output2.write("{}\t{}\t{}\n".format(workflow1.aep, workflow1.finance, workflow1.runtime))
 
 if __name__ == '__main__':
-    run_workflow(1, 0, 1, 1, 0, 1, 1, 1, 1, 1)
+    run_workflow(1, 0, 1, 1, 0, 1, 1, 3, 1, 1)
