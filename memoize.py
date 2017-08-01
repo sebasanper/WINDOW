@@ -11,7 +11,7 @@ class Memoize:
     def reset(self):
         self.memo = {}
 
- 
+
 def Memoize2(fn):
     """returns a memoized version of any function that can be called
     with the same list of arguments.

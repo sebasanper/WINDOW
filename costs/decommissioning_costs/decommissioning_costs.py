@@ -6,7 +6,7 @@ from farm_description import management_percentage, distance_to_grid, NT
 def decommissioning_costs(infield_cable_length):
 
     # ----------------- Decommisioning costs/Removal/Disposal - Input  --------------------
-    scour_protection_removal_per_volume = Cost1(33.0, 'USD', 2010)  # [$/m^3]
+    # scour_protection_removal_per_volume = Cost1(33.0, 'USD', 2010)  # [$/m^3]
     turbine_removal_factor = 0.91  # [-]
     site_clearance_per_turbine = Cost1(16000.0, 'USD', 2010)  # [$]
     turbine_disposal_per_mass = Cost1(0.15, 'USD', 2010)  # [$/kg]
