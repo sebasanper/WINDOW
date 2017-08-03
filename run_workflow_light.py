@@ -1,11 +1,12 @@
-import os
+import os, shutil
 input_folder = 'Project1'
-with open("turbine_description.py", "w") as out:
-    out.write("from input_folder." + input_folder + ".turbine_description_5MW import *")
-with open("farm_description.py", "w") as out:
-    out.write("from input_folder." + input_folder + ".farm_description_5MW import *")
 project_folder = os.path.join('input_folder', input_folder)
-os.chdir(project_folder)
+# os.chdir(project_folder)
+input_files = os.listdir(project_folder)
+for file_name in input_files:
+    full_file_name = os.path.join(project_folder, file_name)
+    if (os.path.isfile(full_file_name)):
+        shutil.copy(full_file_name, os.getcwd())
 from workflow import Workflow
 from site_conditions.wind_conditions.windrose import MeanWind, WeibullWindBins
 from costs.investment_costs.BOS_cost.cable_cost.cable_cost_models import cable_optimiser, radial_cable, random_cable
