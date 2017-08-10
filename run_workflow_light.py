@@ -1,4 +1,5 @@
-import os, shutil
+import os
+import shutil
 
 input_folder = 'Project1'
 
@@ -46,25 +47,25 @@ def run_workflow(a, b, c, d, e, f, g, h, i, j):
                          farm_support_cost_models[j], None, oandm, cablemodels[d], infield_efficiency,
                          thrust_coefficient, thrustmodels[f], wakemodels[a], mergingmodels[e], power,
                          powermodels[g], aep_average, other_costs, total_costs, LPC)
-    nbins = 17  # Number of wind speeds bins for the discretisation of the Weibull distribution.
+    nbins = 25  # Number of wind speeds bins for the discretisation of the Weibull distribution.
     real_angle = 30.0  # Angle [degrees] per wind sector in measured windrose.
     artif_angle = 1.0  # Desired angle [degrees] resolution for wake analysis.
     workflow1.windrose.nbins = nbins
     workflow1.windrose.artificial_angle = artif_angle
     workflow1.windrose.real_angle = real_angle
-    workflow1.print_output = True
+    workflow1.print_output = False
     start1 = time()
     workflow1.run("layout.dat")
     print time() - start1, "seconds runtime"
     power2.reset()
     thrust_coefficient2.reset()
 
-    input_files = os.listdir(project_folder)
-    for file_name in input_files:
-        os.remove(file_name)
-
     with open("output.dat", "a", 1) as output2:
         output2.write("{}\t{}\t{}\n".format(workflow1.aep, workflow1.finance, workflow1.runtime))
 
 if __name__ == '__main__':
-    run_workflow(1, 0, 1, 1, 0, 1, 1, 3, 1, 1)
+    run_workflow(1, 0, 5, 1, 0, 1, 1, 3, 1, 1)
+
+    input_files = os.listdir(project_folder)
+    for file_name in input_files:
+        os.remove(file_name)
