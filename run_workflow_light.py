@@ -1,11 +1,14 @@
 import os, shutil
+
 input_folder = 'Project1'
+
 project_folder = os.path.join('input_folder', input_folder)
 input_files = os.listdir(project_folder)
 for file_name in input_files:
     full_file_name = os.path.join(project_folder, file_name)
-    if (os.path.isfile(full_file_name)):
+    if os.path.isfile(full_file_name):
         shutil.copy(full_file_name, os.getcwd())
+
 from workflow import Workflow
 from site_conditions.wind_conditions.windrose import MeanWind, WeibullWindBins
 from costs.investment_costs.BOS_cost.cable_cost.cable_cost_models import cable_optimiser, radial_cable, random_cable
@@ -55,6 +58,10 @@ def run_workflow(a, b, c, d, e, f, g, h, i, j):
     print time() - start1, "seconds runtime"
     power2.reset()
     thrust_coefficient2.reset()
+
+    input_files = os.listdir(project_folder)
+    for file_name in input_files:
+        os.remove(file_name)
 
     with open("output.dat", "a", 1) as output2:
         output2.write("{}\t{}\t{}\n".format(workflow1.aep, workflow1.finance, workflow1.runtime))
